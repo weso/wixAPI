@@ -11,7 +11,7 @@ from bson.json_util import dumps
 
 # PyMongo
 from pymongo import MongoClient
-client = MongoClient('localhost', 27017)
+client = MongoClient('localhost', 9090)
 
 # Database
 db = client['webindex']
@@ -24,107 +24,6 @@ db = client['webindex']
 def index():
     return "Web Index API"
     
-##########################################################################################
-##                                        NORMALISE                                          ##
-##########################################################################################
-
-@app.route("/normalise")
-def normalise():
-	countries = [
-	"Sweden",
-	"Norway",
-	"United Kingdom of Great Britain and Northern Ireland",
-	"United States of America",
-	"New Zealand",
-	"Denmark",
-	"Finland",
-	"Iceland",
-	"France",
-	"Republic of Korea",
-	"Australia",
-	"Netherlands",
-	"Japan",
-	"Austria",
-	"Canada",
-	"Germany",
-	"Switzerland",
-	"Estonia",
-	"Ireland",
-	"Belgium",
-	"Poland",
-	"Italy",
-	"Portugal",
-	"Czech Republic",
-	"Israel",
-	"Greece",
-	"Chile",
-	"Spain",
-	"Uruguay",
-	"Mexico",
-	"Singapore",
-	"Colombia",
-	"Brazil",
-	"Costa Rica",
-	"South Africa",
-	"Argentina",
-	"Malaysia",
-	"Philippines",
-	"Peru",
-	"Mauritius",
-	"Russian Federation",
-	"Hungary",
-	"Ecuador",
-	"Tunisia",
-	"United Arab Emirates",
-	"Thailand",
-	"Jamaica",
-	"Indonesia",
-	"Kazakhstan",
-	"Bahrain",
-	"Qatar",
-	"Venezuela (Bolivarian Republic of)",
-	"Kenya",
-	"Morocco",
-	"Ghana",
-	"India",
-	"China",
-	"Turkey",
-	"United Republic of Tanzania",
-	"Namibia",
-	"Senegal",
-	"Jordan",
-	"Egypt",
-	"Bangladesh",
-	"Uganda",
-	"Zambia",
-	"Nigeria",
-	"Botswana",
-	"Saudi Arabia",
-	"Benin",
-	"Nepal",
-	"Viet Nam",
-	"Burkina Faso",
-	"Malawi",
-	"Rwanda",
-	"Cameroon",
-	"Pakistan",
-	"Zimbabwe",
-	"Mali",
-	"Ethiopia",
-	"Yemen"
-	]
-
-	for i in range(len(countries)):
-		name = countries[i]
-		country = find_countries_by_code(name)
-		
-		if country == None:
-			print name
-		else:
-			print country["iso3"]
-	
-	return "norm"
-
 ##########################################################################################
 ##                                       AREAS                                          ##
 ##########################################################################################
@@ -146,7 +45,7 @@ def list_continents():
 def show_area(area_code):
     area = find_countries_by_code(area_code)
     
-    if area == None:
+    if area is None:
         return area_error(area_code)
     
     name = area["name"]
@@ -161,7 +60,7 @@ def show_area(area_code):
 def show_area_countries(area_code):
     area = find_countries_by_code(area_code)
     
-    if area == None:
+    if area is None:
         return area_error(area_code)
     
     name = area["name"]
@@ -346,7 +245,7 @@ def find_indicators_index():
 def find_indicators_subindices():
     return find_indicators_by_level("Subindex")
     
-def find_indicators_components(parent = None):
+def find_indicators_components(parent=None):
     return find_indicators_by_level("Component", parent)
     
 def find_indicators_primary(parent = None):
