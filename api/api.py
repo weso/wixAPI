@@ -11,7 +11,7 @@ from bson.json_util import dumps
 
 # PyMongo
 from pymongo import MongoClient
-client = MongoClient('localhost', 27017)
+client = MongoClient('localhost', 9090)
 
 # Database
 db = client['webindex']
