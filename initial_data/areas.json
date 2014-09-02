@@ -1,0 +1,86 @@
+{ "name" : "Africa", "iso2" : null, "iso3" : null, "area" : null }
+{ "name" : "Americas", "iso2" : null, "iso3" : null, "area" : null }
+{ "name" : "Asia_Pacific", "iso2" : null, "iso3" : null, "area" : null }
+{ "name" : "Europe", "iso2" : null, "iso3" : null, "area" : null }
+{ "name" : "Middle_East_Central_Asia", "iso2" : null, "iso3" : null, "area" : null }
+{ "name" : "South Africa", "iso2" : "ZA", "iso3" : "ZAF", "area" : "Africa", "income" : "UMC" }
+{ "name" : "Mauritius", "iso2" : "MU", "iso3" : "MUS", "area" : "Africa", "income" : "UMC" }
+{ "name" : "Tunisia", "iso2" : "TN", "iso3" : "TUN", "area" : "Africa", "income" : "UMC" }
+{ "name" : "Kenya", "iso2" : "KE", "iso3" : "KEN", "area" : "Africa", "income" : "LIC" }
+{ "name" : "Morocco", "iso2" : "MA", "iso3" : "MAR", "area" : "Africa", "income" : "LMC" }
+{ "name" : "Ghana", "iso2" : "GH", "iso3" : "GHA", "area" : "Africa", "income" : "LMC" }
+{ "name" : "United Republic Of Tanzania", "iso2" : "TZ", "iso3" : "TZA", "area" : "Africa", "income" : "LIC" }
+{ "name" : "Namibia", "iso2" : "NA", "iso3" : "NAM", "area" : "Africa", "income" : "UMC" }
+{ "name" : "Senegal", "iso2" : "SN", "iso3" : "SEN", "area" : "Africa", "income" : "LMC" }
+{ "name" : "Egypt", "iso2" : "EG", "iso3" : "EGY", "area" : "Africa", "income" : "LMC" }
+{ "name" : "Uganda", "iso2" : "UG", "iso3" : "UGA", "area" : "Africa", "income" : "LIC" }
+{ "name" : "Zambia", "iso2" : "ZM", "iso3" : "ZMB", "area" : "Africa", "income" : "LMC" }
+{ "name" : "Nigeria", "iso2" : "NG", "iso3" : "NGA", "area" : "Africa", "income" : "LMC" }
+{ "name" : "Botswana", "iso2" : "BW", "iso3" : "BWA", "area" : "Africa", "income" : "UMC" }
+{ "name" : "Benin", "iso2" : "BJ", "iso3" : "BEN", "area" : "Africa", "income" : "LIC" }
+{ "name" : "Burkina Faso", "iso2" : "BF", "iso3" : "BFA", "area" : "Africa", "income" : "LIC" }
+{ "name" : "Malawi", "iso2" : "MW", "iso3" : "MWI", "area" : "Africa", "income" : "LIC" }
+{ "name" : "Rwanda", "iso2" : "RW", "iso3" : "RWA", "area" : "Africa", "income" : "LIC" }
+{ "name" : "Cameroon", "iso2" : "CM", "iso3" : "CMR", "area" : "Africa", "income" : "LMC" }
+{ "name" : "Zimbabwe", "iso2" : "ZW", "iso3" : "ZWE", "area" : "Africa", "income" : "LIC" }
+{ "name" : "Mali", "iso2" : "ML", "iso3" : "MLI", "area" : "Africa", "income" : "LIC" }
+{ "name" : "Ethiopia", "iso2" : "ET", "iso3" : "ETH", "area" : "Africa", "income" : "LIC" }
+{ "name" : "United States Of America", "iso2" : "US", "iso3" : "USA", "area" : "Americas", "income" : "OEC" }
+{ "name" : "Canada", "iso2" : "CA", "iso3" : "CAN", "area" : "Americas", "income" : "OEC" }
+{ "name" : "Chile", "iso2" : "CL", "iso3" : "CHL", "area" : "Americas", "income" : "UMC" }
+{ "name" : "Uruguay", "iso2" : "UY", "iso3" : "URY", "area" : "Americas", "income" : "UMC" }
+{ "name" : "Mexico", "iso2" : "MX", "iso3" : "MEX", "area" : "Americas", "income" : "UMC" }
+{ "name" : "Colombia", "iso2" : "CO", "iso3" : "COL", "area" : "Americas", "income" : "UMC" }
+{ "name" : "Brazil", "iso2" : "BR", "iso3" : "BRA", "area" : "Americas", "income" : "UMC" }
+{ "name" : "Costa Rica", "iso2" : "CR", "iso3" : "CRI", "area" : "Americas", "income" : "UMC" }
+{ "name" : "Argentina", "iso2" : "AR", "iso3" : "ARG", "area" : "Americas", "income" : "UMC" }
+{ "name" : "Peru", "iso2" : "PE", "iso3" : "PER", "area" : "Americas", "income" : "UMC" }
+{ "name" : "Ecuador", "iso2" : "EC", "iso3" : "ECU", "area" : "Americas", "income" : "UMC" }
+{ "name" : "Jamaica", "iso2" : "JM", "iso3" : "JAM", "area" : "Americas", "income" : "UMC" }
+{ "name" : "Venezuela (Bolivarian Republic Of)", "iso2" : "VE", "iso3" : "VEN", "area" : "Americas", "income" : "UMC" }
+{ "name" : "New Zealand", "iso2" : "NZ", "iso3" : "NZL", "area" : "Asia_Pacific", "income" : "OEC" }
+{ "name" : "Republic Of Korea", "iso2" : "KR", "iso3" : "KOR", "area" : "Asia_Pacific", "income" : "OEC" }
+{ "name" : "Australia", "iso2" : "AU", "iso3" : "AUS", "area" : "Asia_Pacific", "income" : "OEC" }
+{ "name" : "Japan", "iso2" : "JP", "iso3" : "JPN", "area" : "Asia_Pacific", "income" : "OEC" }
+{ "name" : "Singapore", "iso2" : "SG", "iso3" : "SGP", "area" : "Asia_Pacific", "income" : "NOC" }
+{ "name" : "Malaysia", "iso2" : "MY", "iso3" : "MYS", "area" : "Asia_Pacific", "income" : "UMC" }
+{ "name" : "Philippines", "iso2" : "PH", "iso3" : "PHL", "area" : "Asia_Pacific", "income" : "LMC" }
+{ "name" : "Thailand", "iso2" : "TH", "iso3" : "THA", "area" : "Asia_Pacific", "income" : "UMC" }
+{ "name" : "Indonesia", "iso2" : "ID", "iso3" : "IDN", "area" : "Asia_Pacific", "income" : "LMC" }
+{ "name" : "India", "iso2" : "IN", "iso3" : "IND", "area" : "Asia_Pacific", "income" : "LMC" }
+{ "name" : "China", "iso2" : "CN", "iso3" : "CHN", "area" : "Asia_Pacific", "income" : "UMC" }
+{ "name" : "Bangladesh", "iso2" : "BD", "iso3" : "BGD", "area" : "Asia_Pacific", "income" : "LIC" }
+{ "name" : "Nepal", "iso2" : "NP", "iso3" : "NPL", "area" : "Asia_Pacific", "income" : "LIC" }
+{ "name" : "Viet Nam", "iso2" : "VN", "iso3" : "VNM", "area" : "Asia_Pacific", "income" : "LMC" }
+{ "name" : "Pakistan", "iso2" : "PK", "iso3" : "PAK", "area" : "Asia_Pacific", "income" : "LMC" }
+{ "name" : "Sweden", "iso2" : "SE", "iso3" : "SWE", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Norway", "iso2" : "NO", "iso3" : "NOR", "area" : "Europe", "income" : "OEC" }
+{ "name" : "United Kingdom Of Great Britain And Northern Ireland", "iso2" : "GB", "iso3" : "GBR", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Denmark", "iso2" : "DK", "iso3" : "DNK", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Finland", "iso2" : "FI", "iso3" : "FIN", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Iceland", "iso2" : "IS", "iso3" : "ISL", "area" : "Europe", "income" : "OEC" }
+{ "name" : "France", "iso2" : "FR", "iso3" : "FRA", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Netherlands", "iso2" : "NL", "iso3" : "NLD", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Austria", "iso2" : "AT", "iso3" : "AUT", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Germany", "iso2" : "DE", "iso3" : "DEU", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Switzerland", "iso2" : "CH", "iso3" : "CHE", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Estonia", "iso2" : "EE", "iso3" : "EST", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Ireland", "iso2" : "IE", "iso3" : "IRL", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Belgium", "iso2" : "BE", "iso3" : "BEL", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Poland", "iso2" : "PL", "iso3" : "POL", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Italy", "iso2" : "IT", "iso3" : "ITA", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Portugal", "iso2" : "PT", "iso3" : "PRT", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Czech Republic", "iso2" : "CZ", "iso3" : "CZE", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Greece", "iso2" : "GR", "iso3" : "GRC", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Spain", "iso2" : "ES", "iso3" : "ESP", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Russian Federation", "iso2" : "RU", "iso3" : "RUS", "area" : "Europe", "income" : "UMC" }
+{ "name" : "Hungary", "iso2" : "HU", "iso3" : "HUN", "area" : "Europe", "income" : "OEC" }
+{ "name" : "Turkey", "iso2" : "TR", "iso3" : "TUR", "area" : "Europe", "income" : "UMC" }
+{ "name" : "Israel", "iso2" : "IL", "iso3" : "ISR", "area" : "Middle_East_Central_Asia", "income" : "OEC" }
+{ "name" : "United Arab Emirates", "iso2" : "AE", "iso3" : "ARE", "area" : "Middle_East_Central_Asia", "income" : "NOC" }
+{ "name" : "Kazakhstan", "iso2" : "KZ", "iso3" : "KAZ", "area" : "Middle_East_Central_Asia", "income" : "UMC" }
+{ "name" : "Bahrain", "iso2" : "BH", "iso3" : "BHR", "area" : "Middle_East_Central_Asia", "income" : "NOC" }
+{ "name" : "Qatar", "iso2" : "QA", "iso3" : "QAT", "area" : "Middle_East_Central_Asia", "income" : "NOC" }
+{ "name" : "Jordan", "iso2" : "JO", "iso3" : "JOR", "area" : "Middle_East_Central_Asia", "income" : "UMC" }
+{ "name" : "Saudi Arabia", "iso2" : "SA", "iso3" : "SAU", "area" : "Middle_East_Central_Asia", "income" : "NOC" }
+{ "name" : "Yemen", "iso2" : "YE", "iso3" : "YEM", "area" : "Middle_East_Central_Asia", "income" : "LMC" }
