@@ -41,15 +41,43 @@
 				background-color: #eee;
 			}
 
+			ul.entities > li:nth-child(even) {
+				background-color: #f8f8f8;
+			}
+
 			.schema > li {
 				padding-bottom: 0.4em;
+			}
+
+			.schema > li > a:first-child {
+				font-size: 1.5em;
+			}
+
+			/* unvisited link */
+			a:link {
+			    color: #0066FF;
+			}
+
+			/* visited link */
+			a:visited {
+			    color: #660066;
+			}
+
+			pre {
+				background-color: #ddd;
+				padding-top: 0.5em;
+			}
+
+			li pre {
+				background-color: transparent;
+				border-top: 0.1em solid #888;
 			}
 		</style>
 	</head>
 	<body>
 		<h1>Web Index Data API v1.0</title>
 		<h2>Introduction</h2>
-		This is the Web Index Data API. This API is based on RESTful principles. So you can access it through normal http requests.
+		This is the Web Index Data API. This API is based on RESTful principles. So you can access it through normal HTTP requests.
 		<h2>Usage</h2>
 		Every API method returns a JSON object with the following fields:
 		<ul>
@@ -78,16 +106,27 @@
 				<h5 id="area_code">Area code</h5>
 				<ul>
 					<li>To identify an area we can use its name, its ISO2 or ISO3 code, or and income identifier.</li>
-					<li>Continents must be identified by name (Africa, Europe...).</li>
-					<li>For countries we recommend to use IOS3 or ISO2 codes.</li>
+					<li>
+						Continents must be identified by an internal code.
+						<ul>
+							<li><strong>NAC</strong>: North America</li>
+    					<li><strong>MEA</strong>: Middle East</li>
+    					<li><strong>SAS</strong>: South Asia</li>
+    					<li><strong>ECS</strong>: Europe & Central Asia</li>
+    					<li><strong>LCN</strong>: Latin America & Caribbean</li>
+    					<li><strong>EAS</strong>: East Asia & Pacific</li>
+							<li><strong>AFR</strong>: Africa</li>
+						</ul>
+					</li>
+					<li>For countries we recommend to use ISO3 or ISO2 codes.</li>
 					<li>Countries can be selected by income level:
 						<ul>
-							<li>INX: Not classified</li>
-    					<li>LIC: Low income</li>
-    					<li>NOC: High income: nonOECD</li>
-    					<li>UMC: Upper middle income</li>
-    					<li>OEC: High income: OECD</li>
-    					<li>LMC: Lower middle income</li>
+							<li><strong>INX</strong>: Not classified</li>
+    					<li><strong>LIC</strong>: Low income</li>
+    					<li><strong>NOC</strong>: High income: nonOECD</li>
+    					<li><strong>UMC</strong>: Upper middle income</li>
+    					<li><strong>OEC</strong>: High income: OECD</li>
+    					<li><strong>LMC</strong>: Lower middle income</li>
 						</ul>
 					</li>
 				</ul>
@@ -177,13 +216,16 @@
 				</ul>
 			</li>
 			<li>
-				<a href="/areas/USA/countries">/areas/&lt;area_code&gt;/countries</a>
+				<a href="/areas/NAC/countries">/areas/&lt;area_code&gt;/countries</a>
 				<p>
 					Returns the countries of one area.
 				</p>
 				<ul>
 					<li><a href="#area_code">&lt;area_code&gt;</a>: code to identify the area.</li>
 				</ul>
+				<p>
+					We can select countries by income. e.g.: <a href="http://localhost:5000/areas/UMC/countries">http://localhost:5000/areas/UMC/countries</a> Returns all countries with Upper Middle Income.
+				</p>
 			</li>
 		</ul>
 		<h4>Indicators</h4>
@@ -289,7 +331,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href=/observations/ITU_G/USA>/observations/&lt;indicator_code&gt;/<area_code></a>
+				<a href=/observations/ITU_G/USA>/observations/&lt;indicator_code&gt;/&lt;area_code&gt;</a>
 				<p>
 					List all observations for one or more indicators and for one or more areas.
 				</p>
@@ -301,7 +343,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href=/observations/ITU_G/USA/2008>/observations/&lt;indicator_code&gt;/<area_code>/&lt;year&gt;</a>
+				<a href=/observations/ITU_G/USA/2008>/observations/&lt;indicator_code&gt;/&lt;area_code&gt;/&lt;year&gt;</a>
 				<p>
 					List all observations for one or more indicators and for one or more areas and for one or more years.
 				</p>

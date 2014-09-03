@@ -27,8 +27,8 @@
 { "name" : "Zimbabwe", "iso2" : "ZW", "iso3" : "ZWE", "area" : "AFR", "income" : "LIC" }
 { "name" : "Mali", "iso2" : "ML", "iso3" : "MLI", "area" : "AFR", "income" : "LIC" }
 { "name" : "Ethiopia", "iso2" : "ET", "iso3" : "ETH", "area" : "AFR", "income" : "LIC" }
-{ "name" : "United States Of America", "iso2" : "US", "iso3" : "USA", "area" : "LCN", "income" : "OEC" }
-{ "name" : "Canada", "iso2" : "CA", "iso3" : "CAN", "area" : "LCN", "income" : "OEC" }
+{ "name" : "United States Of America", "iso2" : "US", "iso3" : "USA", "area" : "NAC", "income" : "OEC" }
+{ "name" : "Canada", "iso2" : "CA", "iso3" : "CAN", "area" : "NAC", "income" : "OEC" }
 { "name" : "Chile", "iso2" : "CL", "iso3" : "CHL", "area" : "LCN", "income" : "UMC" }
 { "name" : "Uruguay", "iso2" : "UY", "iso3" : "URY", "area" : "LCN", "income" : "UMC" }
 { "name" : "Mexico", "iso2" : "MX", "iso3" : "MEX", "area" : "LCN", "income" : "UMC" }
