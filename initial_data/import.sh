@@ -1,4 +1,3 @@
-#!/bin/sh
 # Import areas (countries and continents)
 mongoimport --db webindex --collection areas < areas.json
 

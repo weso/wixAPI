@@ -11,7 +11,7 @@ from bson.json_util import dumps
 
 # PyMongo
 from pymongo import MongoClient
-client = MongoClient('localhost', 9090)
+client = MongoClient('localhost', 27017)
 
 # Database
 db = client['webindex']
@@ -271,8 +271,8 @@ def find_countries():
     return countryList
 
 def set_continent_countries(area):
-    name = area["name"]
-    countries = db['areas'].find({ "area": name })
+    iso3 = area["iso3"]
+    countries = db['areas'].find({ "area": iso3 })
     countryList = []
 
     for country in countries:

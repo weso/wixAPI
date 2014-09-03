@@ -2,35 +2,318 @@
 <html>
 	<head>
 		<title>Web Index Data API</title>
+		<style>
+			body {
+				padding: 0 1em;
+			}
+
+			h2 {
+				border-bottom: 0.1em solid #333;
+			}
+
+			h3 {
+				text-decoration: underline;
+			}
+
+			h4 {
+				text-transform: uppercase;
+				margin: 0;
+			}
+
+			h5 {
+				font-size: 1em;
+				margin-bottom: 0.2em;
+			}
+
+			ul.entities {
+				padding: 0;
+			}
+
+			ul.entities > li {
+				border-bottom: 0.1em solid #ccc;
+				padding-top: 0.3em;
+				padding-bottom: 0.1em;
+				padding-left: 0.5em;
+				list-style: none;
+			}
+
+			ul.entities > li:nth-child(odd) {
+				background-color: #eee;
+			}
+
+			.schema > li {
+				padding-bottom: 0.4em;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Web Index Data API</title>
+		<h1>Web Index Data API v1.0</title>
 		<h2>Introduction</h2>
 		This is the Web Index Data API. This API is based on RESTful principles. So you can access it through normal http requests.
 		<h2>Usage</h2>
+		Every API method returns a JSON object with the following fields:
 		<ul>
+			<li><strong>success</strong>: (boolean) returns <strong>true</strong> when no error is raised.</li>
+			<li><strong>data</strong>: (object) represents the requested information.</li>
+			<li><strong>error</strong>: (text) error description. Only when an error is encountered.
+		</ul>
+		<pre>
+		{
+			data: { ... },
+			success: true
+		}
+		</pre>
+		When the API encounters an error:
+		<pre>
+		{
+			error: "Error message",
+			success: false
+		}
+		</pre>
+		<h3>Entities</h3>
+		<ul class="entities">
+			<li>
+				<h4>Area</h4>
+				<p>Represents a region like a country or a group of countries like Europe or America.</p>
+				<h5 id="area_code">Area code</h5>
+				<ul>
+					<li>To identify an area we can use its name, its ISO2 or ISO3 code, or and income identifier.</li>
+					<li>Continents must be identified by name (Africa, Europe...).</li>
+					<li>For countries we recommend to use IOS3 or ISO2 codes.</li>
+					<li>Countries can be selected by income level:
+						<ul>
+							<li>INX: Not classified</li>
+    					<li>LIC: Low income</li>
+    					<li>NOC: High income: nonOECD</li>
+    					<li>UMC: Upper middle income</li>
+    					<li>OEC: High income: OECD</li>
+    					<li>LMC: Lower middle income</li>
+						</ul>
+					</li>
+				</ul>
+				<pre>
+					{
+						"area": "LCN",
+						"income": "OEC",
+						"iso2": "US",
+						"iso3": "USA",
+						"name": "United States Of America",
+						"uri": "http://thewebindex.org/api/areas/USA"
+					}
+				</pre>
+			</li>
+			<li>
+				<h4>Indicator</h4>
+				<p>Represents a set of data grouped by the same criteria, e.g.: ITU_G.</p>
+				<ul>
+					<li>A group of indicators compound a component.</li>
+					<li>A subindex is compound by several components.</li>
+					<li>All subindices are merged into one Index.</li>
+					<li>There are two types of indicators: primary and secondary.</li>
+				</ul>
+				<h5 id="indicator_code">Indicator code</h5>
+				<ul>
+					<li>To identify an indicator we'll use the internal indicator code. e.g.: ITU_A</li>
+				</ul>
+				<pre>
+					{
+						"children": [],
+						"component": "COMMUNICATIONS_INFRASTRUCTURE",
+						"index": "INDEX",
+						"indicator": "ITU_G",
+						"name": "% of population covered by mobile cellular network",
+						"parent": "COMMUNICATIONS_INFRASTRUCTURE",
+						"subindex": "UNIVERSAL_ACCESS",
+						"type": "Secondary",
+						"uri": "http://thewebindex.org/api/indicators/ITU_G"
+					}
+				</pre>
+			</li>
+			<li>
+				<h4>Observations</h4>
+				<p>Represents a data observed or recollected in a moment or period of time for one country and one indicator.</p>
+				<pre>
+					{
+						"area": "USA",
+						"area_name": "United States Of America",
+						"indicator": "ITU_G",
+						"indicator_name": "% of population covered by mobile cellular network",
+						"normalised": 0.4607894808777562,
+						"uri": "http://thewebindex.org/api/observations/ITU_G/USA/2010",
+						"value": 99.8,
+						"year": "2010"
+					}
+				</pre>
+			</li>
+		</ul>
+		<h3>URI Schema</h3>
+		<h4>Areas</h4>
+		<ul class="schema">
 			<li>
 				<a href="/areas">/areas</a>
+				<p>
+					List all areas. Each area contains its children (continents contain countries).
+				</p>
 			</li>
-		</ul>
-		<ul>
 			<li>
 				<a href="/areas/countries">/areas/countries</a>
+				<p>
+					List of all countries.
+				</p>
 			</li>
-		</ul>
-		<ul>
 			<li>
 				<a href="/areas/continents">/areas/continents</a>
+				<p>
+					List of all continents. Each one with its countries.
+				</p>
 			</li>
-		</ul>
-		<ul>
 			<li>
 				<a href="/areas/USA">/areas/&lt;area_code&gt;</a>
+				<p>
+					Returns one area information.
+				</p>
+				<ul>
+					<li><a href="#area_code">&lt;area_code&gt;</a>: code to identify the area.</li>
+				</ul>
 			</li>
-		</ul>
-		<ul>
 			<li>
 				<a href="/areas/USA/countries">/areas/&lt;area_code&gt;/countries</a>
+				<p>
+					Returns the countries of one area.
+				</p>
+				<ul>
+					<li><a href="#area_code">&lt;area_code&gt;</a>: code to identify the area.</li>
+				</ul>
+			</li>
+		</ul>
+		<h4>Indicators</h4>
+		<ul class="schema">
+			<li>
+				<a href="/indicators">/indicators</a>
+				<p>
+					List all indicators. Each indicator contains its children.
+				</p>
+			</li>
+			<li>
+				<a href="/indicators/index">/indicators/index</a>
+				<p>
+					Show the Index information. Contains its children.
+				</p>
+			</li>
+			<li>
+				<a href="/indicators/subindices">/indicators/subindices</a>
+				<p>
+					List all subindices, each one contains its children.
+				</p>
+			</li>
+			<li>
+				<a href="/indicators/components">/indicators/components</a>
+				<p>
+					List all components, each one contains its children.
+				</p>
+			</li>
+			<li>
+				<a href="/indicators/primary">/indicators/primary</a>
+				<p>
+					List all primary indicators.
+				</p>
+			</li>
+			<li>
+				<a href="/indicators/secondary">/indicators/secondary</a>
+				<p>
+					List all secondary indicators.
+				</p>
+			</li>
+			<li>
+				<a href="/indicators/ITU_G">/indicators/&lt;indicator_code&gt;</a>
+				<p>
+					Show the information of one indicator.
+				</p>
+				<ul>
+					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the indicator.</li>
+				</ul>
+			</li>
+			<li>
+				<a href="/indicators/INDEX/components">/indicators/&lt;indicator_code&gt;/components</a>
+				<p>
+					List the components below one subindex or the index.
+				</p>
+				<ul>
+					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the subindex or index.</li>
+				</ul>
+			</li>
+			<li>
+				<a href="/indicators/INDEX/indicators">/indicators/&lt;indicator_code&gt;/indicators</a>
+				<p>
+					List the indicators below one component, one subindex or the index.
+				</p>
+				<ul>
+					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the subindex, the component or index.</li>
+				</ul>
+			</li>
+			<li>
+				<a href="/indicators/INDEX/primary">/indicators/&lt;indicator_code&gt;/primary</a>
+				<p>
+					List the primary indicators below one component, one subindex or the index.
+				</p>
+				<ul>
+					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the subindex, the component or index.</li>
+				</ul>
+			</li>
+			<li>
+				<a href="/indicators/INDEX/secondary">/indicators/&lt;indicator_code&gt;/secondary</a>
+				<p>
+					List the secondary indicators below one component, one subindex or the index.
+				</p>
+				<ul>
+					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the subindex, the component or index.</li>
+				</ul>
+			</li>
+		</ul>
+		<h4>Observations</h4>
+		<ul class="schema">
+			<li>
+				<a href="/observations">/observations</a>
+				<p>
+					List all observations. It downloads too much information, NOT RECOMMENDED.
+				</p>
+			</li>
+			<li>
+				<a href=/observations/ITU_G>/observations/&lt;indicator_code&gt;</a>
+				<p>
+					List all observations for one or more indicators.
+				</p>
+				<ul>
+					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the indicator.</li>
+					<li>To enter more than one indicator use comma separated format. e.g.: <a href=/observations/ITU_A,ITU_G>/observations/ITU_A,ITU_G</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href=/observations/ITU_G/USA>/observations/&lt;indicator_code&gt;/<area_code></a>
+				<p>
+					List all observations for one or more indicators and for one or more areas.
+				</p>
+				<ul>
+					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the indicator.</li>
+					<li>To enter more than one indicator use comma separated format. e.g.: <a href=/observations/ITU_A,ITU_G/USA>/observations/ITU_A,ITU_G/USA</a></li>
+					<li><a href="#area_code">&lt;area_code&gt;</a>: code to identify the area.</li>
+					<li>To enter more than one area use comma separated format. e.g.: <a href=/observations/ITU_A/USA,CAN>/observations/ITU_A/USA,CAN</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href=/observations/ITU_G/USA/2008>/observations/&lt;indicator_code&gt;/<area_code>/&lt;year&gt;</a>
+				<p>
+					List all observations for one or more indicators and for one or more areas and for one or more years.
+				</p>
+				<ul>
+					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the indicator.</li>
+					<li>To enter more than one indicator use comma separated format. e.g.: <a href=/observations/ITU_A,ITU_G/USA/2008>/observations/ITU_A,ITU_G/USA/2008</a></li>
+					<li><a href="#area_code">&lt;area_code&gt;</a>: code to identify the area.</li>
+					<li>To enter more than one area use comma separated format. e.g.: <a href=/observations/ITU_A/USA,CAN/2008>/observations/ITU_A/USA,CAN/2008</a></li>
+					<li>&lt;year&gt;: represents a year. e.g.: 2008</li>
+					<li>To enter more than one year we can use comma separated format. e.g.: <a href=/observations/ITU_A/USA/2008,2010>/observations/ITU_A/USA/2008,2010</a></li>
+					<li>We can specify a time range using hyphen. e.g.: <a href=/observations/ITU_A/USA/2008-2010>/observations/ITU_A/USA/2008-2010</a> List all the observation for the indicator ITU_A for USA from 2008 to 2010.</li>
+				</ul>
 			</li>
 		</ul>
 	</body>
