@@ -33,38 +33,33 @@ def index():
 @app.route("/areas")
 def list_areas():
     """List all areas (countries and continents)"""
-    continents = area_repo.find_continents()
-    countries = area_repo.find_countries()
-    continents.append(countries)
-    return success(continents)
+    areas = area_repo.find_areas()
+
+    return dumps(areas)
 
 
 @app.route("/areas/countries")
 def list_countries():
     countries = area_repo.find_countries()
-    return success(countries)
+    return dumps(countries)
 
 
 @app.route("/areas/continents")
 def list_continents():
     continents = area_repo.find_continents()
-    return success(continents)
+    return dumps(continents)
 
 
 @app.route("/areas/<area_code>")
 def show_area(area_code):
     area = area_repo.find_countries_by_code_or_income(area_code)
-    if area is None:
-        return area_repo.area_error(area_code)
-    return success(area)
+    return dumps(area)
 
 
 @app.route("/areas/<area_code>/countries")
 def show_area_countries(area_code):
     countries = area_repo.find_countries_by_continent_or_income(area_code)
-    if countries is None:
-        return area_repo.area_error(area_code)
-    return success(countries)
+    return dumps(countries)
 
 
 ##########################################################################################
@@ -73,86 +68,87 @@ def show_area_countries(area_code):
 
 @app.route("/indicators")
 def list_indicators():
-    _index = ind_repo.find_indicators_index()
-    subindices = ind_repo.find_indicators_sub_indexes()
-    components = ind_repo.find_indicators_components()
-    indicators = ind_repo.find_indicators_indicators()
-    _index.append(subindices)
-    _index.append(components)
-    _index.append(indicators)
-    return success(_index)
+    indicators = ind_repo.find_indicators()
+
+    return dumps(indicators)
 
 
 @app.route("/indicators/index")
 def show_index():
     _index = ind_repo.find_indicators_index()
-    return success(_index)
+    return dumps(_index)
 
 @app.route("/indicators/subindices")
 def list_subindices():
     subindices = ind_repo.find_indicators_sub_indexes()
-    return success(subindices)
+    return dumps(subindices)
 
 @app.route("/indicators/components")
 def list_components():
     components = ind_repo.find_indicators_components()
-    return success(components)
+    return dumps(components)
 
 
 @app.route("/indicators/primary")
 def list_primary():
     primary = ind_repo.find_indicators_primary()
-    return success(primary)
+    return dumps(primary)
 
 
 @app.route("/indicators/secondary")
 def list_secondary():
     secondary = ind_repo.find_indicators_secondary()
-    return success(secondary)
+    return dumps(secondary)
 
 
 @app.route("/indicators/<indicator_code>")
 def show_indicator(indicator_code):
     indicator = ind_repo.find_indicators_by_code(indicator_code)
-    if indicator is None:
-        return ind_repo.indicator_error(indicator_code)
-    return success(indicator)
+    return dumps(indicator)
 
 
 @app.route("/indicators/<indicator_code>/components")
 def list_indicator_components(indicator_code):
     indicator = ind_repo.find_indicators_by_code(indicator_code)
-    if indicator is None:
-        return ind_repo.indicator_error(indicator_code)
-    components = ind_repo.find_indicators_components(indicator)
-    return success(components)
+
+    if indicator["success"] is False:
+        return dumps(indicator)
+
+    components = ind_repo.find_indicators_components(indicator["data"])
+    return dumps(components)
 
 
 @app.route("/indicators/<indicator_code>/indicators")
 def list_indicator_indicators(indicator_code):
     indicator = ind_repo.find_indicators_by_code(indicator_code)
-    if indicator is None:
-        return ind_repo.indicator_error(indicator_code)
-    indicators = ind_repo.find_indicators_indicators(indicator)
-    return success(indicators)
+
+    if indicator["success"] is False:
+        return dumps(indicator)
+
+    indicators = ind_repo.find_indicators_indicators(indicator["data"])
+    return dumps(indicators)
 
 
 @app.route("/indicators/<indicator_code>/primary")
 def list_indicator_primary(indicator_code):
     indicator = ind_repo.find_indicators_by_code(indicator_code)
-    if indicator is None:
-        return ind_repo.indicator_error(indicator_code)
-    primary = ind_repo.find_indicators_primary(indicator)
-    return success(primary)
+
+    if indicator["success"] is False:
+        return dumps(indicator)
+
+    primary = ind_repo.find_indicators_primary(indicator["data"])
+    return dumps(primary)
 
 
 @app.route("/indicators/<indicator_code>/secondary")
 def list_indicator_secondary(indicator_code):
     indicator = ind_repo.find_indicators_by_code(indicator_code)
-    if indicator is None:
-        return ind_repo.indicator_error(indicator_code)
-    secondary = ind_repo.find_indicators_secondary(indicator)
-    return success(secondary)
+
+    if indicator["success"] is False:
+        return dumps(indicator)
+
+    secondary = ind_repo.find_indicators_secondary(indicator["data"])
+    return dumps(secondary)
 
 
 ##########################################################################################
@@ -161,30 +157,29 @@ def list_indicator_secondary(indicator_code):
 @app.route("/observations")
 def list_observations():
     observations = obs_repo.find_observations()
-    return observations
+    return dumps(observations)
 
 
 @app.route("/observations/<indicator_code>")
 def list_observations_by_indicator(indicator_code):
     observations = obs_repo.find_observations(indicator_code)
-    return observations
+    return dumps(observations)
 
 
 @app.route("/observations/<indicator_code>/<area_code>")
 def list_observations_by_indicator_and_country(indicator_code, area_code):
     observations = obs_repo.find_observations(indicator_code, area_code)
-    return observations
+    return dumps(observations)
 
 
 @app.route("/observations/<indicator_code>/<area_code>/<year>")
 def list_observations_by_indicator_and_country_and_year(indicator_code, area_code, year):
     observations = obs_repo.find_observations(indicator_code, area_code, year)
-    return observations
+    return dumps(observations)
 
-
-def success(data):
-    return dumps({"success": True, "data": data})
-
+##########################################################################################
+##                                        MAIN                                          ##
+##########################################################################################
 
 if __name__ == "__main__":
     app.debug = True
