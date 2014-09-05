@@ -1,10 +1,11 @@
 ##########################################################################################
 ##                                  INITIALISATIONS                                     ##
 ##########################################################################################
-
 # Flask
 from flask import Flask, jsonify, request, render_template
 app = Flask(__name__)
+import sys
+sys.path.append('../../../')
 from infrastructure.mongo_repos.area_repository import AreaRepository
 from infrastructure.mongo_repos.indicator_repository import IndicatorRepository
 from infrastructure.mongo_repos.observation_repository import ObservationRepository
