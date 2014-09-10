@@ -189,25 +189,25 @@
 		<h4>Areas</h4>
 		<ul class="schema">
 			<li>
-				<a href="/areas">/areas</a>
+				<a href="/api/areas">/areas</a>
 				<p>
 					List all areas. Each area contains its children (continents contain countries).
 				</p>
 			</li>
 			<li>
-				<a href="/areas/countries">/areas/countries</a>
+				<a href="/api/areas/countries">/areas/countries</a>
 				<p>
 					List of all countries.
 				</p>
 			</li>
 			<li>
-				<a href="/areas/continents">/areas/continents</a>
+				<a href="/api/areas/continents">/areas/continents</a>
 				<p>
 					List of all continents. Each one with its countries.
 				</p>
 			</li>
 			<li>
-				<a href="/areas/USA">/areas/&lt;area_code&gt;</a>
+				<a href="/api/areas/USA">/areas/&lt;area_code&gt;</a>
 				<p>
 					Returns one area information.
 				</p>
@@ -216,7 +216,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href="/areas/NAC/countries">/areas/&lt;area_code&gt;/countries</a>
+				<a href="/api/areas/NAC/countries">/areas/&lt;area_code&gt;/countries</a>
 				<p>
 					Returns the countries of one area.
 				</p>
@@ -224,50 +224,50 @@
 					<li><a href="#area_code">&lt;area_code&gt;</a>: code to identify the area.</li>
 				</ul>
 				<p>
-					We can select countries by income. e.g.: <a href="http://localhost:5000/areas/UMC/countries">http://localhost:5000/areas/UMC/countries</a> Returns all countries with Upper Middle Income.
+					We can select countries by income. e.g.: <a href="/api/areas/UMC/countries">http://localhost/areas/UMC/countries</a> Returns all countries with Upper Middle Income.
 				</p>
 			</li>
 		</ul>
 		<h4>Indicators</h4>
 		<ul class="schema">
 			<li>
-				<a href="/indicators">/indicators</a>
+				<a href="/api/indicators">/indicators</a>
 				<p>
 					List all indicators. Each indicator contains its children.
 				</p>
 			</li>
 			<li>
-				<a href="/indicators/index">/indicators/index</a>
+				<a href="/api/indicators/index">/indicators/index</a>
 				<p>
 					Show the Index information. Contains its children.
 				</p>
 			</li>
 			<li>
-				<a href="/indicators/subindices">/indicators/subindices</a>
+				<a href="/api/indicators/subindices">/indicators/subindices</a>
 				<p>
 					List all subindices, each one contains its children.
 				</p>
 			</li>
 			<li>
-				<a href="/indicators/components">/indicators/components</a>
+				<a href="/api/indicators/components">/indicators/components</a>
 				<p>
 					List all components, each one contains its children.
 				</p>
 			</li>
 			<li>
-				<a href="/indicators/primary">/indicators/primary</a>
+				<a href="/api/indicators/primary">/indicators/primary</a>
 				<p>
 					List all primary indicators.
 				</p>
 			</li>
 			<li>
-				<a href="/indicators/secondary">/indicators/secondary</a>
+				<a href="/api/indicators/secondary">/indicators/secondary</a>
 				<p>
 					List all secondary indicators.
 				</p>
 			</li>
 			<li>
-				<a href="/indicators/ITU_G">/indicators/&lt;indicator_code&gt;</a>
+				<a href="/api/indicators/ITU_G">/indicators/&lt;indicator_code&gt;</a>
 				<p>
 					Show the information of one indicator.
 				</p>
@@ -276,7 +276,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href="/indicators/INDEX/components">/indicators/&lt;indicator_code&gt;/components</a>
+				<a href="/api/indicators/INDEX/components">/indicators/&lt;indicator_code&gt;/components</a>
 				<p>
 					List the components below one subindex or the index.
 				</p>
@@ -285,7 +285,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href="/indicators/INDEX/indicators">/indicators/&lt;indicator_code&gt;/indicators</a>
+				<a href="/api/indicators/INDEX/indicators">/indicators/&lt;indicator_code&gt;/indicators</a>
 				<p>
 					List the indicators below one component, one subindex or the index.
 				</p>
@@ -294,7 +294,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href="/indicators/INDEX/primary">/indicators/&lt;indicator_code&gt;/primary</a>
+				<a href="/api/indicators/INDEX/primary">/indicators/&lt;indicator_code&gt;/primary</a>
 				<p>
 					List the primary indicators below one component, one subindex or the index.
 				</p>
@@ -303,7 +303,7 @@
 				</ul>
 			</li>
 			<li>
-				<a href="/indicators/INDEX/secondary">/indicators/&lt;indicator_code&gt;/secondary</a>
+				<a href="/api/indicators/INDEX/secondary">/indicators/&lt;indicator_code&gt;/secondary</a>
 				<p>
 					List the secondary indicators below one component, one subindex or the index.
 				</p>
@@ -315,46 +315,46 @@
 		<h4>Observations</h4>
 		<ul class="schema">
 			<li>
-				<a href="/observations">/observations</a>
+				<a href="/api/observations">/observations</a>
 				<p>
 					List all observations. It downloads too much information, NOT RECOMMENDED.
 				</p>
 			</li>
 			<li>
-				<a href=/observations/ITU_G>/observations/&lt;indicator_code&gt;</a>
+				<a href=/api/observations/ITU_G>/observations/&lt;indicator_code&gt;</a>
 				<p>
 					List all observations for one or more indicators.
 				</p>
 				<ul>
 					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the indicator.</li>
-					<li>To enter more than one indicator use comma separated format. e.g.: <a href=/observations/ITU_A,ITU_G>/observations/ITU_A,ITU_G</a></li>
+					<li>To enter more than one indicator use comma separated format. e.g.: <a href=/api/observations/ITU_A,ITU_G>/observations/ITU_A,ITU_G</a></li>
 				</ul>
 			</li>
 			<li>
-				<a href=/observations/ITU_G/USA>/observations/&lt;indicator_code&gt;/&lt;area_code&gt;</a>
+				<a href=/api/observations/ITU_G/USA>/observations/&lt;indicator_code&gt;/&lt;area_code&gt;</a>
 				<p>
 					List all observations for one or more indicators and for one or more areas.
 				</p>
 				<ul>
 					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the indicator.</li>
-					<li>To enter more than one indicator use comma separated format. e.g.: <a href=/observations/ITU_A,ITU_G/USA>/observations/ITU_A,ITU_G/USA</a></li>
+					<li>To enter more than one indicator use comma separated format. e.g.: <a href=/api/observations/ITU_A,ITU_G/USA>/observations/ITU_A,ITU_G/USA</a></li>
 					<li><a href="#area_code">&lt;area_code&gt;</a>: code to identify the area.</li>
-					<li>To enter more than one area use comma separated format. e.g.: <a href=/observations/ITU_A/USA,CAN>/observations/ITU_A/USA,CAN</a></li>
+					<li>To enter more than one area use comma separated format. e.g.: <a href=/api/observations/ITU_A/USA,CAN>/observations/ITU_A/USA,CAN</a></li>
 				</ul>
 			</li>
 			<li>
-				<a href=/observations/ITU_G/USA/2008>/observations/&lt;indicator_code&gt;/&lt;area_code&gt;/&lt;year&gt;</a>
+				<a href=/api/observations/ITU_G/USA/2008>/observations/&lt;indicator_code&gt;/&lt;area_code&gt;/&lt;year&gt;</a>
 				<p>
 					List all observations for one or more indicators and for one or more areas and for one or more years.
 				</p>
 				<ul>
 					<li><a href="#indicator_code">&lt;indicator_code&gt;</a>: code to identify the indicator.</li>
-					<li>To enter more than one indicator use comma separated format. e.g.: <a href=/observations/ITU_A,ITU_G/USA/2008>/observations/ITU_A,ITU_G/USA/2008</a></li>
+					<li>To enter more than one indicator use comma separated format. e.g.: <a href=/api/observations/ITU_A,ITU_G/USA/2008>/observations/ITU_A,ITU_G/USA/2008</a></li>
 					<li><a href="#area_code">&lt;area_code&gt;</a>: code to identify the area.</li>
-					<li>To enter more than one area use comma separated format. e.g.: <a href=/observations/ITU_A/USA,CAN/2008>/observations/ITU_A/USA,CAN/2008</a></li>
+					<li>To enter more than one area use comma separated format. e.g.: <a href=/api/observations/ITU_A/USA,CAN/2008>/observations/ITU_A/USA,CAN/2008</a></li>
 					<li>&lt;year&gt;: represents a year. e.g.: 2008</li>
-					<li>To enter more than one year we can use comma separated format. e.g.: <a href=/observations/ITU_A/USA/2008,2010>/observations/ITU_A/USA/2008,2010</a></li>
-					<li>We can specify a time range using hyphen. e.g.: <a href=/observations/ITU_A/USA/2008-2010>/observations/ITU_A/USA/2008-2010</a> List all the observation for the indicator ITU_A for USA from 2008 to 2010.</li>
+					<li>To enter more than one year we can use comma separated format. e.g.: <a href=/api/observations/ITU_A/USA/2008,2010>/observations/ITU_A/USA/2008,2010</a></li>
+					<li>We can specify a time range using hyphen. e.g.: <a href=/api/observations/ITU_A/USA/2008-2010>/observations/ITU_A/USA/2008-2010</a> List all the observation for the indicator ITU_A for USA from 2008 to 2010.</li>
 				</ul>
 			</li>
 		</ul>
