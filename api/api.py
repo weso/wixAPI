@@ -29,20 +29,24 @@ def index():
 @app.route("/areas")
 def list_areas():
     """List all areas (countries and continents)"""
-    areas = AreaRepository(url_root=request.url_root).find_areas()
+    order = request.args.get('orderBy')
+
+    areas = AreaRepository(url_root=request.url_root).find_areas(order)
 
     return dumps(areas)
 
 
 @app.route("/areas/countries")
 def list_countries():
-    countries = AreaRepository(url_root=request.url_root).find_countries()
+    order = request.args.get('orderBy')
+    countries = AreaRepository(url_root=request.url_root).find_countries(order)
     return dumps(countries)
 
 
 @app.route("/areas/continents")
 def list_continents():
-    continents = AreaRepository(url_root=request.url_root).find_continents()
+    order = request.args.get('orderBy')
+    continents = AreaRepository(url_root=request.url_root).find_continents(order)
     return dumps(continents)
 
 
@@ -54,7 +58,8 @@ def show_area(area_code):
 
 @app.route("/areas/<area_code>/countries")
 def show_area_countries(area_code):
-    countries = AreaRepository(url_root=request.url_root).find_countries_by_continent_or_income(area_code)
+    order = request.args.get('orderBy')
+    countries = AreaRepository(url_root=request.url_root).find_countries_by_continent_or_income(area_code, order)
     return dumps(countries)
 
 
