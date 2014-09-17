@@ -179,6 +179,15 @@ def list_observations_by_indicator_and_country_and_year(indicator_code, area_cod
     return dumps(observations)
 
 ##########################################################################################
+##                                    OBSERVATIONS                                      ##
+##########################################################################################
+
+@app.route("/years")
+def list_observations_years():
+    years = ObservationRepository(url_root=request.url_root).get_year_list()
+    return dumps(years)
+
+##########################################################################################
 ##                                        MAIN                                          ##
 ##########################################################################################
 
