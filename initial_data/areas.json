@@ -41,7 +41,7 @@
 { "name" : "Jamaica", "iso2" : "JM", "iso3" : "JAM", "area" : "LCN", "income" : "UMC", "iso_num" : "388" }
 { "name" : "Venezuela (Bolivarian Republic Of)", "iso2" : "VE", "iso3" : "VEN", "area" : "LCN", "income" : "UMC", "iso_num" : "862" }
 { "name" : "New Zealand", "iso2" : "NZ", "iso3" : "NZL", "area" : "EAS", "income" : "OEC", "iso_num" : "554" }
-{ "name" : "Republic Of Korea", "iso2" : "KR", "iso3" : "KOR", "area" : "EAS", "income" : "OEC", "iso_num" : "410" }
+{ "name" : "Korea (Rep. of)", "iso2" : "KR", "iso3" : "KOR", "area" : "EAS", "income" : "OEC", "iso_num" : "410" }
 { "name" : "Australia", "iso2" : "AU", "iso3" : "AUS", "area" : "EAS", "income" : "OEC", "iso_num" : "036" }
 { "name" : "Japan", "iso2" : "JP", "iso3" : "JPN", "area" : "EAS", "income" : "OEC", "iso_num" : "392" }
 { "name" : "Singapore", "iso2" : "SG", "iso3" : "SGP", "area" : "EAS", "income" : "NOC", "iso_num" : "702" }
