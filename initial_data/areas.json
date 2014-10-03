@@ -57,7 +57,7 @@
 { "name" : "Pakistan", "iso2" : "PK", "iso3" : "PAK", "area" : "SAS", "income" : "LMC", "iso_num" : "586" }
 { "name" : "Sweden", "iso2" : "SE", "iso3" : "SWE", "area" : "ECS", "income" : "OEC", "iso_num" : "752" }
 { "name" : "Norway", "iso2" : "NO", "iso3" : "NOR", "area" : "ECS", "income" : "OEC", "iso_num" : "578" }
-{ "name" : "United Kingdom Of Great Britain And Northern Ireland", "iso2" : "GB", "iso3" : "GBR", "area" : "ECS", "income", "iso_num" : "" : "OEC", "iso_num" : "826" }
+{ "name" : "United Kingdom Of Great Britain And Northern Ireland", "iso2" : "GB", "iso3" : "GBR", "area" : "ECS", "income" : "OEC", "iso_num" : "826" }
 { "name" : "Denmark", "iso2" : "DK", "iso3" : "DNK", "area" : "ECS", "income" : "OEC", "iso_num" : "208" }
 { "name" : "Finland", "iso2" : "FI", "iso3" : "FIN", "area" : "ECS", "income" : "OEC", "iso_num" : "246" }
 { "name" : "Iceland", "iso2" : "IS", "iso3" : "ISL", "area" : "ECS", "income" : "OEC", "iso_num" : "352" }
