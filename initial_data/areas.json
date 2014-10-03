@@ -86,8 +86,8 @@
 { "name" : "Jordan", "iso2" : "JO", "iso3" : "JOR", "area" : "MEA", "income" : "UMC", "iso_num" : "400" }
 { "name" : "Saudi Arabia", "iso2" : "SA", "iso3" : "SAU", "area" : "MEA", "income" : "NOC", "iso_num" : "682" }
 { "name" : "Yemen", "iso2" : "YE", "iso3" : "YEM", "area" : "MEA", "income" : "LMC", "iso_num" : "887" }
-{ "name" : "Haiti", "iso2" : "HT", "iso3" : "HTI", "area" : "LCN", "income" : "LMC", "iso_num" : "332" }
-{ "name" : "Mozambique", "iso2" : "MZ", "iso3" : "MOZ", "area" : "AFR", "income" : "LMC", "iso_num" : "508" }
-{ "name" : "Myanmar", "iso2" : "MM", "iso3" : "MMR", "area" : "SAS", "income" : "LMC", "iso_num" : "104" }
-{ "name" : "Sierra Leone", "iso2" : "SL", "iso3" : "SLE", "area" : "AFR", "income" : "LMC", "iso_num" : "694" }
+{ "name" : "Haiti", "iso2" : "HT", "iso3" : "HTI", "area" : "LCN", "income" : "LIC", "iso_num" : "332" }
+{ "name" : "Mozambique", "iso2" : "MZ", "iso3" : "MOZ", "area" : "AFR", "income" : "LIC", "iso_num" : "508" }
+{ "name" : "Myanmar", "iso2" : "MM", "iso3" : "MMR", "area" : "SAS", "income" : "LIC", "iso_num" : "104" }
+{ "name" : "Sierra Leone", "iso2" : "SL", "iso3" : "SLE", "area" : "AFR", "income" : "LIC", "iso_num" : "694" }
 { "name" : "Ukraine", "iso2" : "UA", "iso3" : "UKR", "area" : "ECS", "income" : "LMC", "iso_num" : "804" }
