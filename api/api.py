@@ -1,10 +1,14 @@
-##########################################################################################
+# #########################################################################################
 ##                                  INITIALISATIONS                                     ##
 ##########################################################################################
 # Flask
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, request, render_template, Response
+import json
+from functools import wraps
+
 app = Flask(__name__)
 import sys
+
 sys.path.append('../../../')
 from infrastructure.mongo_repos.area_repository import AreaRepository
 from infrastructure.mongo_repos.indicator_repository import IndicatorRepository
@@ -14,6 +18,21 @@ from infrastructure.mongo_repos.observation_repository import ObservationReposit
 from bson.json_util import dumps
 
 ##########################################################################################
+##                                 JSONP DECORATOR                                      ##
+##########################################################################################
+
+def JSONEncoder(request, data):
+    json = dumps(data)
+
+    callback = request.args.get('callback', False)
+
+    if callback:
+        return Response(str(callback) + '(' + str(json) + ');', mimetype = "application/javascript")
+
+    return Response(json, mimetype = "application/json")
+
+
+##########################################################################################
 ##                                        ROOT                                          ##
 ##########################################################################################
 
@@ -21,6 +40,7 @@ from bson.json_util import dumps
 def index():
     """API Documentation"""
     return render_template('help.html')
+
 
 ##########################################################################################
 ##                                       AREAS                                          ##
@@ -33,34 +53,34 @@ def list_areas():
 
     areas = AreaRepository(url_root=request.url_root).find_areas(order)
 
-    return dumps(areas)
+    return JSONEncoder(request, areas)
 
 
 @app.route("/areas/countries")
 def list_countries():
     order = request.args.get('orderBy')
     countries = AreaRepository(url_root=request.url_root).find_countries(order)
-    return dumps(countries)
+    return JSONEncoder(request, countries)
 
 
 @app.route("/areas/continents")
 def list_continents():
     order = request.args.get('orderBy')
     continents = AreaRepository(url_root=request.url_root).find_continents(order)
-    return dumps(continents)
+    return JSONEncoder(request, continents)
 
 
 @app.route("/areas/<area_code>")
 def show_area(area_code):
     area = AreaRepository(url_root=request.url_root).find_countries_by_code_or_income(area_code)
-    return dumps(area)
+    return JSONEncoder(request, area)
 
 
 @app.route("/areas/<area_code>/countries")
 def show_area_countries(area_code):
     order = request.args.get('orderBy')
     countries = AreaRepository(url_root=request.url_root).find_countries_by_continent_or_income(area_code, order)
-    return dumps(countries)
+    return JSONEncoder(request, countries)
 
 
 ##########################################################################################
@@ -71,41 +91,43 @@ def show_area_countries(area_code):
 def list_indicators():
     indicators = IndicatorRepository(url_root=request.url_root).find_indicators()
 
-    return dumps(indicators)
+    return JSONEncoder(request, indicators)
 
 
 @app.route("/indicators/index")
 def show_index():
     _index = IndicatorRepository(url_root=request.url_root).find_indicators_index()
-    return dumps(_index)
+    return JSONEncoder(request, _index)
+
 
 @app.route("/indicators/subindices")
 def list_subindices():
     subindices = IndicatorRepository(url_root=request.url_root).find_indicators_sub_indexes()
-    return dumps(subindices)
+    return JSONEncoder(request, subindices)
+
 
 @app.route("/indicators/components")
 def list_components():
     components = IndicatorRepository(url_root=request.url_root).find_indicators_components()
-    return dumps(components)
+    return JSONEncoder(request, components)
 
 
 @app.route("/indicators/primary")
 def list_primary():
     primary = IndicatorRepository(url_root=request.url_root).find_indicators_primary()
-    return dumps(primary)
+    return JSONEncoder(request, primary)
 
 
 @app.route("/indicators/secondary")
 def list_secondary():
     secondary = IndicatorRepository(url_root=request.url_root).find_indicators_secondary()
-    return dumps(secondary)
+    return JSONEncoder(request, secondary)
 
 
 @app.route("/indicators/<indicator_code>")
 def show_indicator(indicator_code):
     indicator = IndicatorRepository(url_root=request.url_root).find_indicators_by_code(indicator_code)
-    return dumps(indicator)
+    return JSONEncoder(request, indicator)
 
 
 @app.route("/indicators/<indicator_code>/components")
@@ -113,10 +135,10 @@ def list_indicator_components(indicator_code):
     indicator = IndicatorRepository(url_root=request.url_root).find_indicators_by_code(indicator_code)
 
     if indicator["success"] is False:
-        return dumps(indicator)
+        return JSONEncoder(request, indicator)
 
     components = IndicatorRepository(url_root=request.url_root).find_indicators_components(indicator["data"])
-    return dumps(components)
+    return JSONEncoder(request, components)
 
 
 @app.route("/indicators/<indicator_code>/indicators")
@@ -124,10 +146,10 @@ def list_indicator_indicators(indicator_code):
     indicator = IndicatorRepository(url_root=request.url_root).find_indicators_by_code(indicator_code)
 
     if indicator["success"] is False:
-        return dumps(indicator)
+        return JSONEncoder(request, indicator)
 
     indicators = IndicatorRepository(url_root=request.url_root).find_indicators_indicators(indicator["data"])
-    return dumps(indicators)
+    return JSONEncoder(request, indicators)
 
 
 @app.route("/indicators/<indicator_code>/primary")
@@ -135,10 +157,10 @@ def list_indicator_primary(indicator_code):
     indicator = IndicatorRepository(url_root=request.url_root).find_indicators_by_code(indicator_code)
 
     if indicator["success"] is False:
-        return dumps(indicator)
+        return JSONEncoder(request, indicator)
 
     primary = IndicatorRepository(url_root=request.url_root).find_indicators_primary(indicator["data"])
-    return dumps(primary)
+    return JSONEncoder(request, primary)
 
 
 @app.route("/indicators/<indicator_code>/secondary")
@@ -146,10 +168,10 @@ def list_indicator_secondary(indicator_code):
     indicator = IndicatorRepository(url_root=request.url_root).find_indicators_by_code(indicator_code)
 
     if indicator["success"] is False:
-        return dumps(indicator)
+        return JSONEncoder(request, indicator)
 
     secondary = IndicatorRepository(url_root=request.url_root).find_indicators_secondary(indicator["data"])
-    return dumps(secondary)
+    return JSONEncoder(request, secondary)
 
 
 ##########################################################################################
@@ -158,25 +180,26 @@ def list_indicator_secondary(indicator_code):
 @app.route("/observations")
 def list_observations():
     observations = ObservationRepository(url_root=request.url_root).find_observations()
-    return dumps(observations)
+    return JSONEncoder(request, observations)
 
 
 @app.route("/observations/<indicator_code>")
 def list_observations_by_indicator(indicator_code):
     observations = ObservationRepository(url_root=request.url_root).find_observations(indicator_code)
-    return dumps(observations)
+    return JSONEncoder(request, observations)
 
 
 @app.route("/observations/<indicator_code>/<area_code>")
 def list_observations_by_indicator_and_country(indicator_code, area_code):
     observations = ObservationRepository(url_root=request.url_root).find_observations(indicator_code, area_code)
-    return dumps(observations)
+    return JSONEncoder(request, observations)
 
 
 @app.route("/observations/<indicator_code>/<area_code>/<year>")
 def list_observations_by_indicator_and_country_and_year(indicator_code, area_code, year):
     observations = ObservationRepository(url_root=request.url_root).find_observations(indicator_code, area_code, year)
-    return dumps(observations)
+    return JSONEncoder(request, observations)
+
 
 ##########################################################################################
 ##                                    OBSERVATIONS                                      ##
@@ -185,7 +208,7 @@ def list_observations_by_indicator_and_country_and_year(indicator_code, area_cod
 @app.route("/years")
 def list_observations_years():
     years = ObservationRepository(url_root=request.url_root).get_year_list()
-    return dumps(years)
+    return JSONEncoder(request, years)
 
 ##########################################################################################
 ##                                        MAIN                                          ##
