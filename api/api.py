@@ -202,12 +202,17 @@ def list_observations_by_indicator_and_country_and_year(indicator_code, area_cod
 
 
 ##########################################################################################
-##                                    OBSERVATIONS                                      ##
+##                                        YEARS                                         ##
 ##########################################################################################
 
 @app.route("/years")
 def list_observations_years():
     years = ObservationRepository(url_root=request.url_root).get_year_list()
+    return JSONEncoder(request, years)
+
+@app.route("/years/array")
+def list_observations_years_array():
+    years = ObservationRepository(url_root=request.url_root).get_year_array()
     return JSONEncoder(request, years)
 
 ##########################################################################################
