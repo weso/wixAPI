@@ -224,9 +224,9 @@ def list_visualisations(indicator_code, area_code, year):
     visualisations = ObservationRepository(url_root=request.url_root).find_visualisations(indicator_code, area_code, year)
     return JSONEncoder(request, visualisations)
 
-@app.route("/visualisations/<indicator_code>/<area_code>/<year>")
-def list_visualisations_maxBars(indicator_code, area_code, year, maxBars):
-    visualisations = ObservationRepository(url_root=request.url_root).find_visualisations(indicator_code, area_code, year, maxBars)
+@app.route("/visualisations_new/<indicator_code>/<area_code>/<year>")
+def list_visualisations_new(indicator_code, area_code, year):
+    visualisations = ObservationRepository(url_root=request.url_root).find_visualisations_new(indicator_code, area_code, year)
     return JSONEncoder(request, visualisations)
 
 ##########################################################################################
