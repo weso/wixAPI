@@ -13,6 +13,7 @@ sys.path.append('../../../')
 from infrastructure.mongo_repos.area_repository import AreaRepository
 from infrastructure.mongo_repos.indicator_repository import IndicatorRepository
 from infrastructure.mongo_repos.observation_repository import ObservationRepository
+from infrastructure.mongo_repos.ranking_repository import RankingRepository
 
 # bson
 from bson.json_util import dumps
@@ -223,6 +224,15 @@ def list_observations_years_array():
 def list_visualisations(indicator_code, area_code, year):
     visualisations = ObservationRepository(url_root=request.url_root).find_visualisations(indicator_code, area_code, year)
     return JSONEncoder(request, visualisations)
+
+##########################################################################################
+##                                       RANKINGS                                       ##
+##########################################################################################
+
+@app.route("/rankings/<year>")
+def list_rankings(year):
+    rankings = RankingRepository(url_root=request.url_root).find_rankings(year)
+    return JSONEncoder(request, rankings)
 
 ##########################################################################################
 ##                                        MAIN                                          ##
