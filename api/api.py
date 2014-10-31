@@ -262,6 +262,8 @@ def list_home(indicator1, indicator2, indicator3, indicator4):
         observations4 = ObservationRepository(url_root=request.url_root).find_observations(indicator4, "ALL", year)
         observations4 = observations4["data"] if observations4["data"] else []
 
+        rankings = RankingRepository(url_root=request.url_root).find_rankings(year)
+
     return JSONEncoder(request, {
         "observations1": observations1,
         "percentage1": get_percentage(observations1),
@@ -270,7 +272,8 @@ def list_home(indicator1, indicator2, indicator3, indicator4):
         "observations3": observations3,
         "percentage3": get_percentage(observations3),
         "observations4": observations4,
-        "percentage4": get_percentage(observations4)
+        "percentage4": get_percentage(observations4),
+        "rankings": rankings
     })
 
 def get_percentage(observations):
