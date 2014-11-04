@@ -183,12 +183,15 @@ def list_observations():
     observations = ObservationRepository(url_root=request.url_root).find_observations()
     return JSONEncoder(request, observations)
 
+@app.route("/linked-observations")
+def list_linked_observations():
+    linked_obs = ObservationRepository(url_root=request.url_root).find_linked_observations()
+    return JSONEncoder(request, linked_obs)
 
 @app.route("/observations/<indicator_code>")
 def list_observations_by_indicator(indicator_code):
     observations = ObservationRepository(url_root=request.url_root).find_observations(indicator_code)
     return JSONEncoder(request, observations)
-
 
 @app.route("/observations/<indicator_code>/<area_code>")
 def list_observations_by_indicator_and_country(indicator_code, area_code):
@@ -298,4 +301,4 @@ def get_percentage(observations):
 
 if __name__ == "__main__":
     app.debug = True
-    app.run()
+    app.run(host='0.0.0.0')
