@@ -286,7 +286,7 @@ def get_percentage(observations):
     for observation in observations:
         value = observation["value"]
 
-        if value >= 5:
+        if value > 5:
             sum = sum + 1
 
         count = count + 1
