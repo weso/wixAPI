@@ -241,59 +241,66 @@ def list_rankings(year):
 ##                                         HOME                                        ##
 ##########################################################################################
 
-@app.route("/home/<indicator1>/<indicator2>/<indicator3>/<indicator4>")
-def list_home(indicator1, indicator2, indicator3, indicator4):
+@app.route("/home/<indicators>/<limits>/<tendencies>/<values>")
+def list_home(indicators, limits, tendencies, values):
     years = ObservationRepository(url_root=request.url_root).get_year_array()
 
-    observations1 = []
-    observations2 = []
-    observations3 = []
-    observations4 = []
+    indicators = indicators.upper().strip().split(",")
+    limits = limits.upper().strip().split(",")
+    tendencies = tendencies.upper().strip().split(",")
+    values = values.upper().strip().split(",")
 
     if years["success"] is True:
         year = years["data"][0]
-
-        observations1 = ObservationRepository(url_root=request.url_root).find_observations(indicator1, "ALL", year)
-        observations1 = observations1["data"] if observations1["data"] else []
-
-        observations2 = ObservationRepository(url_root=request.url_root).find_observations(indicator2, "ALL", year)
-        observations2 = observations2["data"] if observations2["data"] else []
-
-        observations3 = ObservationRepository(url_root=request.url_root).find_observations(indicator3, "ALL", year)
-        observations3 = observations3["data"] if observations3["data"] else []
-
-        observations4 = ObservationRepository(url_root=request.url_root).find_observations(indicator4, "ALL", year)
-        observations4 = observations4["data"] if observations4["data"] else []
-
         rankings = RankingRepository(url_root=request.url_root).find_rankings(year)
+        result = {
+            "rankings": rankings
+        }
 
-    return JSONEncoder(request, {
-        "observations1": observations1,
-        "percentage1": get_percentage(observations1),
-        "observations2": observations2,
-        "percentage2": get_percentage(observations2),
-        "observations3": observations3,
-        "percentage3": get_percentage(observations3),
-        "observations4": observations4,
-        "percentage4": get_percentage(observations4),
-        "rankings": rankings
-    })
+        for i in range(len(indicators)):
+            indicator = indicators[i]
+            limit = limits[i] if i < len(limits) else ""
+            tendency = tendencies[i] if i < len(tendencies) else -1
+            value = values[i] if i < len(values) else ""
 
-def get_percentage(observations):
+            index = str(i + 1)
+
+            observations = ObservationRepository(url_root=request.url_root).find_observations(indicator, "ALL", year)
+            observations = observations["data"] if observations["data"] else []
+
+            percentage = get_percentage(observations, limit, tendency) if limit else value
+
+            result["observations%s" % index] = observations
+            result["percentage%s" % index] = percentage
+
+    return JSONEncoder(request, result)
+
+def get_percentage(observations, limit, tendency):
     count = 0
     sum = 0
+    tendency = num(tendency)
+    limit = num(limit)
 
     for observation in observations:
         value = observation["value"]
 
-        if value > 5:
+        if tendency > 0 and value >= limit:
+            sum = sum + 1
+
+        if tendency < 0 and value <= limit:
             sum = sum + 1
 
         count = count + 1
 
-    percentage = sum * 100 / count if count > 0 else 0
+    percentage = sum * 100.0 / count if count > 0 else 0
 
     return round(percentage)
+
+def num(s):
+    try:
+        return int(s)
+    except ValueError:
+        return 0
 
 ##########################################################################################
 ##                                        MAIN                                          ##
