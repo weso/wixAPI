@@ -232,6 +232,13 @@ def list_visualisations(indicator_code, area_code, year):
 ##                                       RANKINGS                                       ##
 ##########################################################################################
 
+@app.route("/rankings")
+def list_last_rankings():
+    years = ObservationRepository(url_root=request.url_root).get_year_list()
+    year = years["data"][0]["value"]
+    rankings = RankingRepository(url_root=request.url_root).find_rankings(year)
+    return JSONEncoder(request, rankings)
+
 @app.route("/rankings/<year>")
 def list_rankings(year):
     rankings = RankingRepository(url_root=request.url_root).find_rankings(year)
